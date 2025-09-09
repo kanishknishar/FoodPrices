@@ -47,7 +47,7 @@ public static void main() {
     String regex = "(?<item>.*?)-\\s*(?<retailPrice>\\d+)\\s*--\\s*(?<onlinePrice>(\\d+|N/A))\\s*";
     Pattern pat = Pattern.compile(regex);
     Matcher mat = pat.matcher(prices);
-    NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.of("English","IN"));
+    NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.of("English", "IN"));
     NumberFormat pf = NumberFormat.getPercentInstance();
 
     int itemCounter = 1;
@@ -69,14 +69,14 @@ public static void main() {
         double discount = retailPrice - onlinePrice;
         double discountPercentage = discount / retailPrice;
 
-        System.out.printf("%d. Discount on %s is %s - a discount of %s%n", itemCounter++, item, nf.format(discount), pf.format(discountPercentage));
+        System.out.printf("%d. Discount on %s is %s - a discount of %s%n", itemCounter++, item, nf.format(discount),
+                pf.format(discountPercentage));
 
         totalRetailPrice += retailPrice;
         savings += (int) discount;
     }
 
-    System.out.println(STR."Total savings = \{nf.format(savings)}");
-    System.out.println(STR."Average discount = \{pf.format(savings / totalRetailPrice)}");
+    System.out.println("Total savings = " + nf.format(savings));
+    System.out.println("Average discount = " + (pf.format(savings / totalRetailPrice)));
     System.out.println(sb);
-
 }
